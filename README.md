@@ -244,3 +244,5 @@ Dica: o bug está no código acima.
 
 #### Faça o commit das alterações
 Com os testes passando, faça o commit com a seguinte mensagem: *Commit 5: Extracting get_frequent_renter_points from Client.statement to Rental*.
+
+
