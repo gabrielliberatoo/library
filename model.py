@@ -46,23 +46,18 @@ class Client:
     def add_rental(self, rental: Rental):
         self.rentals.append(rental)
 
+    def get_total_amount(self) -> float:
+        """Calcula o valor total de todos os aluguéis do cliente."""
+        return sum(rental.get_amount() for rental in self.rentals)
+
     def statement(self) -> str:
-        total_amount = 0
-        frequent_renter_points = 0
+        total_amount = self.get_total_amount()  # Usamos o novo método
+        frequent_renter_points = sum(rental.get_frequent_renter_points() for rental in self.rentals)
+
         result = f"Rental summary for {self.name}\n"
-
         for rental in self.rentals:
-            amount = rental.get_amount()
-            points = rental.get_frequent_renter_points()  # Agora usamos o novo método
+            result += f"- {rental.book.title}: {rental.get_amount()}\n"
 
-            # Somamos os valores
-            total_amount += amount
-            frequent_renter_points += points
-
-            # show each rental result
-            result += f"- {rental.book.title}: {amount}\n"
-
-        # show total result
         result += f"Total: {total_amount}\n"
         result += f"Points: {frequent_renter_points}"
         return result
