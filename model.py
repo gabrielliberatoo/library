@@ -1,5 +1,29 @@
-class Book:
+class Price:
+    """Classe abstrata para representar diferentes tipos de preços."""
+    
+    def get_charge(self, days_rented: int) -> float:
+        pass
 
+    def get_frequent_renter_points(self, days_rented: int) -> int:
+        pass
+
+
+class RegularPrice(Price):
+    """Preço para livros regulares."""
+    pass
+
+
+class NewReleasePrice(Price):
+    """Preço para lançamentos."""
+    pass
+
+
+class ChildrenPrice(Price):
+    """Preço para livros infantis."""
+    pass
+
+
+class Book:
     REGULAR: int = 0
     NEW_RELEASE: int = 1
     CHILDREN: int = 2
